@@ -144,7 +144,7 @@ func (ms *MainSotrage) DeleteUser(uId int) (username string, err error) {
 			return
 		}
 	}
-	return "", errors.New("пользователь не найден")
+	return "", errors.New("пользователь не найден.")
 }
 
 func NewStore() *MainSotrage {
