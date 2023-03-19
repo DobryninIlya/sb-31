@@ -42,6 +42,11 @@ func New(creator UserCreator) func(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(err.Error())
 			return
 		}
+		if u.Age < 0 {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("некорректные данные"))
+			return
+		}
 		newUserId := creator.CreateUser(u)
 
 		ans := AnswerCreate{newUserId}
